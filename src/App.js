@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Greetings from './components/Greetings';
+import IdCard from './components/IdCard';
+import People from "./data/berlin.json"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {People.map((person, idx)=> {
+    return (
+      <IdCard
+      key={idx}
+      lastName={person.firstName}
+      firstName={person.lastName}
+      country={person.country}
+      picture={person.img}
+    />)})
+     }
+     <Greetings lang="de">Ludwig</Greetings>
     </div>
   );
 }
